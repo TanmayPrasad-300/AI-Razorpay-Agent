@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>RazorAgent OS · Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#09090b;color:#fafafa;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#27272a;border-radius:4px}
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:#0c0c0e;border-right:1px solid #1c1c1f;padding:18px 12px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;gap:10px;align-items:center;padding:8px 10px;margin-bottom:18px}
+.logo{width:34px;height:34px;border-radius:9px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.brand b{font-size:14px;display:block}
+.brand span{font-size:10px;color:#71717a;font-family:'IBM Plex Mono',monospace}
+.sec{font-size:10px;color:#52525b;letter-spacing:.08em;text-transform:uppercase;padding:14px 10px 6px;font-weight:600}
+.nav{text-decoration:none;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;font-size:13px;color:#a1a1aa;cursor:pointer;margin-bottom:2px}
+.nav:hover,.nav.on{background:#18181b;color:#fff}
+.foot{margin-top:auto;border-top:1px solid #1c1c1f;padding-top:14px}
+.user{display:flex;gap:10px;align-items:center;padding:8px;border:1px solid #1c1c1f;border-radius:8px;background:#111}
+.av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.main{display:flex;flex-direction:column;min-width:0}
+.top{height:52px;border-bottom:1px solid #1c1c1f;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#09090b;position:sticky;top:0;z-index:20}
+.crumb{font-size:13px;color:#71717a}.crumb strong{color:#fafafa}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.08);color:#4ade80;display:inline-flex;gap:6px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.wrap{padding:24px}
+h1{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.sub{color:#71717a;font-size:14px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pcard{background:#0c0c0e;border:1px solid #1c1c1f;border-radius:12px;overflow:hidden;transition:.15s}
+.pcard:hover{border-color:#3f3f46;transform:translateY(-2px)}
+.pcard img{width:100%;height:160px;object-fit:cover;background:#111}
+.pinfo{padding:14px}
+.pcat{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#71717a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.pname{font-size:14px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.pdesc{font-size:11.5px;color:#71717a;margin-bottom:10px;line-height:1.4;height:32px;overflow:hidden}
+.prow{display:flex;justify-content:space-between;align-items:center}
+.pprice{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.pbadge{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:5px;border:1px solid}
+.pok{background:rgba(34,197,94,.08);color:#4ade80;border-color:rgba(34,197,94,.2)}
+.pno{background:rgba(239,68,68,.08);color:#f87171;border-color:rgba(239,68,68,.2)}
+.loading{padding:40px;text-align:center;color:#71717a}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><div class="logo">R</div><div><b>RazorAgent</b><span>v2.0 · AP2 / UAP</span></div></div>
+    <div class="sec">Workspace</div>
+    <a href="index.html" class="nav">💬 Commerce Chat</a>
+    <a href="guardrails.html" class="nav">🛡 Guardrails</a>
+    <a href="audit.html" class="nav">📋 Audit Log</a>
+    <a href="catalog.html" class="nav on">📦 Catalog</a>
+    <div class="sec">Protocols</div>
+    <a href="ap2.html" class="nav">⚡ AP2 Registry</a>
+    <a href="uap.html" class="nav">🔐 UAP Mandates</a>
+    <div class="sec">System</div>
+    <a href="settings.html" class="nav">⚙ Settings</a>
+    <div class="foot"><div class="user"><div class="av">TP</div><div><div style="font-size:12px;font-weight:600">Tanmay P.</div><div style="font-size:10px;color:#71717a;font-family:'IBM Plex Mono',monospace">merchant.dev</div></div></div></div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <div class="crumb">Workspace / <strong>Catalog</strong></div>
+      <div class="chip"><span class="dot"></span>LIVE</div>
+    </div>
+    <div class="wrap">
+      <h1>📦 Product Catalog</h1>
+      <p class="sub">All SKUs exposed to AI agents via <code style="color:#a78bfa;font-family:'IBM Plex Mono',monospace"></code></p>
+      <div class="grid" id="grid"><div class="loading">Loading catalog from API...</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+fetch('http://localhost:8000/.well-known/agent-catalog.json')
+  .then(r=>r.json())
+  .then(data=>{
+    const g=document.getElementById('grid');
+    g.innerHTML='';
+    // Fetch full details from chat for each
+    Promise.all(data.items.map(async it=>{
+      const r=await fetch('http://localhost:8000/api/v1/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:it.sku})});
+      return (await r.json()).products[0];
+    })).then(products=>{
+      // fallback if empty
+      if(!products.length){g.innerHTML='<div class="loading">Empty catalog</div>';return}
+      renderCatalog(data.items);
+    }).catch(()=>renderCatalog(data.items));
+  })
+  .catch(()=>{
+    document.getElementById('grid').innerHTML='<div class="loading">⚠ Backend offline. Start uvicorn on port 8000.</div>';
+  });
+
+function renderCatalog(items){
+  const g=document.getElementById('grid');
+  g.innerHTML='';
+  const images={
+    'sku_audio_01':'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80',
+    'sku_audio_02':'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400&q=80',
+    'sku_desk_01':'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=400&q=80',
+    'sku_desk_02':'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80',
+    'sku_kb_01':'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80',
+    'sku_mouse_01':'https://images.unsplash.com/photo-1615663245857-ac93bb7cde72?w=400&q=80',
+    'sku_monitor_01':'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80',
+    'sku_cam_01':'https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=400&q=80',
+    'sku_chair_01':'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=400&q=80',
+    'sku_light_01':'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80'
+  };
+  items.forEach(it=>{
+    const price='₹'+(it.price_paise/100).toLocaleString('en-IN');
+    const c=document.createElement('div'); c.className='pcard';
+    c.innerHTML=`<img src="${images[it.sku]||''}" alt=""/>
+      <div class="pinfo">
+        <div class="pcat">${it.category}</div>
+        <div class="pname">${it.title}</div>
+        <div class="pdesc">SKU: ${it.sku}</div>
+        <div class="prow">
+          <div class="pprice">${price}</div>
+          <span class="pbadge ${it.available?'pok':'pno'}">${it.available?'✓ In Stock':'✗ Out'}</span>
+        </div>
+      </div>`;
+    g.appendChild(c);
+  });
+}
+</script>
+</body>
+</html>

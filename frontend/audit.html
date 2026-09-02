@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>RazorAgent OS · Audit Log</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#09090b;color:#fafafa;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#27272a;border-radius:4px}
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:#0c0c0e;border-right:1px solid #1c1c1f;padding:18px 12px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;gap:10px;align-items:center;padding:8px 10px;margin-bottom:18px}
+.logo{width:34px;height:34px;border-radius:9px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.brand b{font-size:14px;display:block}
+.brand span{font-size:10px;color:#71717a;font-family:'IBM Plex Mono',monospace}
+.sec{font-size:10px;color:#52525b;letter-spacing:.08em;text-transform:uppercase;padding:14px 10px 6px;font-weight:600}
+.nav{text-decoration:none;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;font-size:13px;color:#a1a1aa;cursor:pointer;margin-bottom:2px}
+.nav:hover,.nav.on{background:#18181b;color:#fff}
+.foot{margin-top:auto;border-top:1px solid #1c1c1f;padding-top:14px}
+.user{display:flex;gap:10px;align-items:center;padding:8px;border:1px solid #1c1c1f;border-radius:8px;background:#111}
+.av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.main{display:flex;flex-direction:column;min-width:0}
+.top{height:52px;border-bottom:1px solid #1c1c1f;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#09090b;position:sticky;top:0;z-index:20}
+.crumb{font-size:13px;color:#71717a}.crumb strong{color:#fafafa}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid rgba(34,197,94,.25);background:rgba(34,197,94,.08);color:#4ade80;display:inline-flex;gap:6px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.wrap{padding:24px;max-width:1400px}
+h1{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.sub{color:#71717a;font-size:14px;margin-bottom:24px}
+.section{background:#0c0c0e;border:1px solid #1c1c1f;border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:10px;color:#71717a;text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:14px 18px;border-bottom:1px solid #1c1c1f;background:#111}
+td{padding:14px 18px;border-bottom:1px solid #1c1c1f;font-size:13px;color:#d4d4d8}
+tr:hover td{background:#111}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+.pill{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:5px;border:1px solid}
+.pill.ok{background:rgba(34,197,94,.08);color:#4ade80;border-color:rgba(34,197,94,.2)}
+.pill.no{background:rgba(239,68,68,.08);color:#f87171;border-color:rgba(239,68,68,.2)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><div class="logo">R</div><div><b>RazorAgent</b><span>v2.0 · AP2 / UAP</span></div></div>
+    <div class="sec">Workspace</div>
+    <a href="index.html" class="nav">💬 Commerce Chat</a>
+    <a href="guardrails.html" class="nav">🛡 Guardrails</a>
+    <a href="audit.html" class="nav on">📋 Audit Log</a>
+    <a href="catalog.html" class="nav">📦 Catalog</a>
+    <div class="sec">Protocols</div>
+    <a href="ap2.html" class="nav">⚡ AP2 Registry</a>
+    <a href="uap.html" class="nav">🔐 UAP Mandates</a>
+    <div class="sec">System</div>
+    <a href="settings.html" class="nav">⚙ Settings</a>
+    <div class="foot"><div class="user"><div class="av">TP</div><div><div style="font-size:12px;font-weight:600">Tanmay P.</div><div style="font-size:10px;color:#71717a;font-family:'IBM Plex Mono',monospace">merchant.dev</div></div></div></div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <div class="crumb">Workspace / <strong>Audit Log</strong></div>
+      <div class="chip"><span class="dot"></span>LIVE</div>
+    </div>
+
+    <div class="wrap">
+      <h1>📋 Transaction Audit Log</h1>
+      <p class="sub">Immutable log of every agent action, guardrail decision, and payment.</p>
+
+      <div class="section">
+        <table>
+          <thead><tr><th>Time</th><th>Agent</th><th>Action</th><th>Amount</th><th>Order ID</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">14:32:11</td><td class="mono">demo_agent</td><td>PAYMENT_VERIFIED</td><td class="mono">₹2,499</td><td class="mono">order_QwErTy001</td><td><span class="pill ok">SUCCESS</span></td></tr>
+            <tr><td class="mono">14:29:04</td><td class="mono">demo_agent</td><td>SPENDING_POLICY_CHECK</td><td class="mono">₹34,999</td><td class="mono">—</td><td><span class="pill no">BLOCKED</span></td></tr>
+            <tr><td class="mono">14:28:52</td><td class="mono">voice_agent</td><td>INVENTORY_LOCK</td><td class="mono">₹1,999</td><td class="mono">order_QwErTy002</td><td><span class="pill ok">RESERVED</span></td></tr>
+            <tr><td class="mono">14:25:19</td><td class="mono">voice_agent</td><td>RAZORPAY_ORDER_CREATED</td><td class="mono">₹1,999</td><td class="mono">order_QwErTy003</td><td><span class="pill ok">SUCCESS</span></td></tr>
+            <tr><td class="mono">14:20:33</td><td class="mono">agent_bot_01</td><td>STOCK_FALLBACK_TRIGGERED</td><td class="mono">₹12,999</td><td class="mono">—</td><td><span class="pill no">OUT_OF_STOCK</span></td></tr>
+            <tr><td class="mono">14:15:07</td><td class="mono">demo_agent</td><td>INTENT_MATCH</td><td class="mono">—</td><td class="mono">—</td><td><span class="pill ok">MATCHED</span></td></tr>
+            <tr><td class="mono">14:10:41</td><td class="mono">demo_agent</td><td>PAYMENT_SIGNATURE</td><td class="mono">₹899</td><td class="mono">order_QwErTy004</td><td><span class="pill ok">VERIFIED</span></td></tr>
+            <tr><td class="mono">14:05:22</td><td class="mono">agent_bot_02</td><td>SPENDING_POLICY_CHECK</td><td class="mono">₹8,999</td><td class="mono">order_QwErTy005</td><td><span class="pill ok">PASSED</span></td></tr>
+            <tr><td class="mono">14:01:58</td><td class="mono">voice_agent</td><td>CATALOG_LOOKUP</td><td class="mono">—</td><td class="mono">—</td><td><span class="pill ok">OK</span></td></tr>
+            <tr><td class="mono">13:58:14</td><td class="mono">demo_agent</td><td>GATED_REJECTED</td><td class="mono">₹1,29,999</td><td class="mono">—</td><td><span class="pill no">BLOCKED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
